@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
-VERSALMON=1.8.0 # Salmon Version
+while getopts s:h:m: flag
+do
+    case "${flag}" in
+        s) VERSALMON=${OPTARG};;
+        h) VERGENCODEH=${OPTARG};;
+        m) VERGENCODEM=${OPTARG};;
+    esac
+done
+echo "Salmon Version: ${VERSALMON}";
+echo "Gencode Human Version: ${VERGENCODEH}";
+echo "Gencode Mouse Version: M${VERGENCODEM}";
+
+# Required arguments
+if [ -o -z "${VERSALMON}" -o -z "${VERGENCODEH}" -o -z "${VERGENCODEM}" ]
+then
+    echo "Error: missing required argument(s)"
+    print_usage_and_exit
+fi
+
+
+#VERSALMON=1.8.0 # Salmon Version
 
 SHDECOY=generateDecoyTranscriptome.sh
 if [ ! -f "${SHDECOY}" ]; then
@@ -27,7 +47,7 @@ fi
 
 
 ################### Gencode Human ##############
-VERGENCODEH=36 # Gencode Version
+# VERGENCODEH=36 # Gencode Version
 
 
 DIRINDEXH=index/${VERSALMON}/human_gencode${VERGENCODEH}
