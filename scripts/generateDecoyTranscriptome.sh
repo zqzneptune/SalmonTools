@@ -102,7 +102,7 @@ $bedtools maskfasta -fi $genomefile -bed exons.bed -fo reference.masked.genome.f
 
 # aligning the transcriptome to the masked genome
 echo "[3/10] Aligning transcriptome to genome"
-$mashmap -r reference.masked.genome.fa -q $txpfile -t $threads --pi 80 -s 500
+$mashmap -r reference.masked.genome.fa -q $txpfile -t $threads --pi 80 -s 5000
 
 # extracting the bed files from the reported alignment
 echo "[4/10] Extracting intervals from mashmap alignments"
