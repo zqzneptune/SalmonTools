@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+print_usage_and_exit () {
+    echo "Usage: $0 [-s =1.8.0 Salomn Version] [-h <Gencode Human version>] [-m <Gencode Mouse version>]"
+    exit 1
+}
+
 while getopts s:h:m: flag
 do
     case "${flag}" in
@@ -7,16 +13,17 @@ do
         m) VERGENCODEM=${OPTARG};;
     esac
 done
-echo "Salmon Version: ${VERSALMON}";
-echo "Gencode Human Version: ${VERGENCODEH}";
-echo "Gencode Mouse Version: M${VERGENCODEM}";
 
 # Required arguments
-if [ -o -z "${VERSALMON}" -o -z "${VERGENCODEH}" -o -z "${VERGENCODEM}" ]
-then
+if [ -z "${VERSALMON}" -o -z "${VERGENCODEH}" -o -z "${VERGENCODEM}" ];then
     echo "Error: missing required argument(s)"
     print_usage_and_exit
 fi
+
+
+echo "Salmon Version: ${VERSALMON}";
+echo "Gencode Human Version: ${VERGENCODEH}";
+echo "Gencode Mouse Version: M${VERGENCODEM}";
 
 
 #VERSALMON=1.8.0 # Salmon Version
