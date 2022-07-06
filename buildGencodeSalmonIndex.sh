@@ -54,9 +54,6 @@ fi
 
 
 ################### Gencode Human ##############
-# VERGENCODEH=36 # Gencode Version
-
-
 DIRINDEXH=index/${VERSALMON}/human_gencode${VERGENCODEH}
 
 
@@ -113,8 +110,6 @@ $SALMON index -t $DIRINDEXH/gentrome.fa -d $DIRINDEXH/decoys.txt -i $DIRINDEXH\_
 
 
 ###################### Mouse Gencode ##################
-VERGENCODEM=29
-
 DIRINDEXM=index/${VERSALMON}/mouse_gencodeM${VERGENCODEM}
 mkdir -p ${DIRINDEXM}
 mkdir -p ${DIRINDEXM}\_k15
