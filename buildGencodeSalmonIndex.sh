@@ -50,7 +50,7 @@ if [ ! -f "${SALMON}" ]; then
     wget -c https://github.com/COMBINE-lab/salmon/releases/download/v${VERSALMON}/salmon-${VERSALMON}_linux_x86_64.tar.gz
     tar xzvf salmon-${VERSALMON}_linux_x86_64.tar.gz
 fi
-
+mv salmon-latest_linux_x86_64 salmon-${VERSALMON}_linux_x86_64
 
 
 ################### Gencode Human ##############
