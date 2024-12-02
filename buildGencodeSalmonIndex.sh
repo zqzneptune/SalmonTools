@@ -34,7 +34,7 @@ if [ ! -f "${SALMON}" ]; then
     tar xzvf salmon-${VERSALMON}_linux_x86_64.tar.gz
 fi
 
-if [ -d "salmon-latest_linux_x86_64"]; then
+if [ -d "salmon-latest_linux_x86_64" ]; then
     mv salmon-latest_linux_x86_64 salmon-${VERSALMON}_linux_x86_64
 
     SHDECOY=generateDecoyTranscriptome.sh
