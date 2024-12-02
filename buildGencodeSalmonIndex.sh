@@ -28,23 +28,6 @@ echo "Gencode Mouse Version: M${VERGENCODEM}";
 
 #VERSALMON=1.8.0 # Salmon Version
 
-SHDECOY=generateDecoyTranscriptome.sh
-if [ ! -f "${SHDECOY}" ]; then
-    curl -O https://raw.githubusercontent.com/zqzneptune/SalmonTools/master/scripts/generateDecoyTranscriptome.sh
-fi
-
-MASHMAP=mashmap-Linux64-v2.0/mashmap
-if [ ! -f "${MASHMAP}" ]; then
-    wget -c https://github.com/marbl/MashMap/releases/download/v2.0/mashmap-Linux64-v2.0.tar.gz
-    tar xzvf mashmap-Linux64-v2.0.tar.gz
-fi
-
-BEDTOOLS=bedtools.static.binary
-if [ ! -f "${BEDTOOLS}" ]; then
-    wget -c https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools.static.binary
-    chmod 755 bedtools.static.binary
-fi
-
 SALMON=salmon-${VERSALMON}_linux_x86_64/bin/salmon
 if [ ! -f "${SALMON}" ]; then
     wget -c https://github.com/COMBINE-lab/salmon/releases/download/v${VERSALMON}/salmon-${VERSALMON}_linux_x86_64.tar.gz
@@ -54,6 +37,22 @@ fi
 if [ -d "salmon-latest_linux_x86_64"]; then
     mv salmon-latest_linux_x86_64 salmon-${VERSALMON}_linux_x86_64
 
+    SHDECOY=generateDecoyTranscriptome.sh
+    if [ ! -f "${SHDECOY}" ]; then
+        curl -O https://raw.githubusercontent.com/zqzneptune/SalmonTools/master/scripts/generateDecoyTranscriptome.sh
+    fi
+
+    MASHMAP=mashmap-Linux64-v2.0/mashmap
+    if [ ! -f "${MASHMAP}" ]; then
+        wget -c https://github.com/marbl/MashMap/releases/download/v2.0/mashmap-Linux64-v2.0.tar.gz
+        tar xzvf mashmap-Linux64-v2.0.tar.gz
+    fi
+
+    BEDTOOLS=bedtools.static.binary
+    if [ ! -f "${BEDTOOLS}" ]; then
+        wget -c https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools.static.binary
+        chmod 755 bedtools.static.binary
+    fi
 
     ################### Gencode Human ##############
     DIRINDEXH=index/${VERSALMON}/human_gencode${VERGENCODEH}
