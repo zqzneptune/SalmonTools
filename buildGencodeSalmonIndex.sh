@@ -32,10 +32,15 @@ SALMON=salmon-${VERSALMON}_linux_x86_64/bin/salmon
 if [ ! -f "${SALMON}" ]; then
     wget -c https://github.com/COMBINE-lab/salmon/releases/download/v${VERSALMON}/salmon-${VERSALMON}_linux_x86_64.tar.gz
     tar xzvf salmon-${VERSALMON}_linux_x86_64.tar.gz
+    if [ -d "salmon-latest_linux_x86_64" ]; then
+        mv salmon-latest_linux_x86_64 salmon-${VERSALMON}_linux_x86_64
+    else
+        echo "Error: salmon-${VERSALMON}_linux_x86_64.tar.gz not found"
+        exit 1
+    fi
 fi
 
-if [ -d "salmon-latest_linux_x86_64" ]; then
-    mv salmon-latest_linux_x86_64 salmon-${VERSALMON}_linux_x86_64
+if [ ! -f "${SALMON}" ]; then
 
     SHDECOY=generateDecoyTranscriptome.sh
     if [ ! -f "${SHDECOY}" ]; then
