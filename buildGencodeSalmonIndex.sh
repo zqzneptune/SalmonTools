@@ -29,7 +29,7 @@ echo "Gencode Mouse Version: M${VERGENCODEM}";
 #VERSALMON=1.8.0 # Salmon Version
 
 SALMON=salmon-${VERSALMON}_linux_x86_64/bin/salmon
-if [ -f "${SALMON}" ]; then
+if [ ! -f "${SALMON}" ]; then
     wget -c https://github.com/COMBINE-lab/salmon/releases/download/v${VERSALMON}/salmon-${VERSALMON}_linux_x86_64.tar.gz
     tar xzvf salmon-${VERSALMON}_linux_x86_64.tar.gz
     if [ -d "salmon-latest_linux_x86_64" ]; then
@@ -40,7 +40,7 @@ if [ -f "${SALMON}" ]; then
     fi
 fi
 
-if [ ! -f "${SALMON}" ]; then
+if [ -f "${SALMON}" ]; then
 
     SHDECOY=generateDecoyTranscriptome.sh
     if [ ! -f "${SHDECOY}" ]; then
